@@ -2,10 +2,10 @@
 const app = require('../src/app');
 
 describe('App', () => {
-    it('GET / responds with 200 containing "Hello, world!"', () => {
+    it('GET / responds with 200 containing "Hello noteful!"', () => {
         return supertest(app)
-            .get('/')
-            .expect(200, 'Hello, world!');
+            .get('/api')
+            .expect(200, 'Hello noteful!');
 
     });
 
