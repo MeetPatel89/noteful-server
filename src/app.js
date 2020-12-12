@@ -3,7 +3,8 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
-const { NODE_ENV, DATABASE_URL } = require('./config');
+const { NODE_ENV } = require('./config');
+const foldersRouter = require('./folders/folders-router');
 
 const app = express();
 
@@ -13,9 +14,7 @@ app.use(morgan(morganOption));
 app.use(helmet());
 app.use(cors());
 
-app.get('/api', (req, res) => {
-  res.send('Hello, noteful!');
-});
+app.use('/api', foldersRouter);
 
 app.use(
   (errorHandler = (error, req, res, next) => {
