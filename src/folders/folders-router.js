@@ -14,9 +14,9 @@ foldersRouter
       .catch(next);
   })
   .post(bodyParser, (req, res, next) => {
-    const { name, id } = req.body;
+    const { name } = req.body;
     postFolder = {
-      id,
+      
       name,
     };
     FoldersService.insertFolder(req.app.get('db'), postFolder)

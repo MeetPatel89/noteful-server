@@ -14,13 +14,12 @@ notesRouter
       .catch(next);
   })
   .post(bodyParser, (req, res, next) => {
-    const { id, name, content } = req.body;
-    const folderId = req.body.folder_id;
+    const { name, content } = req.body;
+    const folderid = req.body.folderid;
     const newNote = {
-      id,
       name,
       content,
-      folder_id: folderId,
+      folderid,
     };
 
     NotesService.insertNote(req.app.get('db'), newNote)
@@ -53,7 +52,7 @@ notesRouter
       id: res.note.id,
       name: res.note.name,
       modified: res.note.modified,
-      folderId: res.note.folderId,
+      folderid: res.note.folderid,
       content: res.note.content,
     });
   })
